@@ -2,12 +2,12 @@ import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyDv7goA31q-pu1VJssu_V8-2HBGSArMGKk',
-  authDomain: 'phiso-quizzi.firebaseapp.com',
-  projectId: 'phiso-quizzi',
-  storageBucket: 'phiso-quizzi.appspot.com',
-  messagingSenderId: '690755271088',
-  appId: '1:690755271088:web:671f8b2b55c27125c4db02',
+  apiKey: 'AIzaSyBUyaM2ycydkgskj8egUlYrEE9qzyC9BgU',
+  authDomain: 'quiz-app-1511b.firebaseapp.com',
+  projectId: 'quiz-app-1511b',
+  storageBucket: 'quiz-app-1511b.firebasestorage.app',
+  messagingSenderId: '581088827631',
+  appId: '1:581088827631:web:02739705d8210fe18f231a',
 }
 
 const app = initializeApp(firebaseConfig)
