@@ -89,7 +89,7 @@ export default function ResultScreen({
 
     // Ensure nickname is a string and not empty
     if (!nickname || typeof nickname !== 'string') {
-      return `src/assets/avatar/${avatarFiles[0]}`
+      return `/assets/avatar/${avatarFiles[0]}`
     }
 
     // Create a more stable hash
@@ -102,7 +102,7 @@ export default function ResultScreen({
 
     // Use absolute value and modulo to get index
     const index = Math.abs(hash) % avatarFiles.length
-    return `src/assets/avatar/${avatarFiles[index]}`
+    return `/assets/avatar/${avatarFiles[index]}`
   }
 
   const leaderboardRef = useRef(null)
@@ -131,7 +131,7 @@ export default function ResultScreen({
         display: 'flex',
         flexDirection: 'column',
         background:
-          'url("src/assets/background/home.png") center bottom / cover no-repeat',
+          'url("/assets/background/home.png") center bottom / cover no-repeat',
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',
@@ -337,7 +337,7 @@ export default function ResultScreen({
                     onError={(e) => {
                       // Fallback to first avatar if image fails to load
                       e.target.src =
-                        'src/assets/avatar/0807ac9f-7b9c-43bbe50a82e08.png'
+                        '/assets/avatar/0807ac9f-7b9c-43bbe50a82e08.png'
                     }}
                   />
                 </div>

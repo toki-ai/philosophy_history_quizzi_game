@@ -99,7 +99,7 @@ export default function HomeScreen({ user, onLogout, currentLevel }) {
         minHeight: '100vh',
         width: '100vw',
         background:
-          'url("src/assets/background/home.png") center bottom / cover no-repeat',
+          'url("/assets/background/home.png") center bottom / cover no-repeat',
         color: '#983a34',
         position: 'relative',
         overflow: 'hidden',
@@ -157,7 +157,7 @@ export default function HomeScreen({ user, onLogout, currentLevel }) {
                 <img
                   src={
                     user?.avatar ||
-                    'src/assets/avatar/0ba46bc7-b81b-44f2cbff.png'
+                    '/assets/avatar/0ba46bc7-b81b-44f2cbff.png'
                   }
                   alt='Selected avatar'
                   style={{
@@ -512,7 +512,7 @@ export default function HomeScreen({ user, onLogout, currentLevel }) {
                       <img
                         src={
                           u.avatar ||
-                          'src/assets/avatar/0ba46bc7-b81b-44f2cbff.png'
+                          '/assets/avatar/0ba46bc7-b81b-44f2cbff.png'
                         }
                         alt={`${u.nickname}'s avatar`}
                         style={{
@@ -649,7 +649,7 @@ export default function HomeScreen({ user, onLogout, currentLevel }) {
                           <img
                             src={
                               u.avatar ||
-                              'src/assets/avatar/0ba46bc7-b81b-44f2cbff.png'
+                              '/assets/avatar/0ba46bc7-b81b-44f2cbff.png'
                             }
                             alt={`${u.nickname}'s avatar`}
                             style={{

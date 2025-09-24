@@ -107,7 +107,7 @@ export default function EndGameScreen({ players, onBack, user }) {
         height: '100vh',
         boxSizing: 'border-box',
         width: '100vw',
-        background: `url('src/assets/background/home.png') center bottom / cover no-repeat`,
+        background: `url('/assets/background/home.png') center bottom / cover no-repeat`,
         fit: 'cover',
         color: '#fff',
         display: 'flex',

@@ -20,15 +20,15 @@ export default function LoginForm({ onLogin, onAdminLogin }) {
 
   // List of available avatars
   const avatars = [
-    '/src/assets/avatar/0807ac9f-7b9c-43bbe50a82e08.png',
-    '/src/assets/avatar/0ba46bc7-b81b-44f2cbff.png',
-    '/src/assets/avatar/1c87f596dbbaaebf059259272e46.png',
-    '/src/assets/avatar/2e7c9dc183e550431672a6911739.png',
-    '/src/assets/avatar/6f0439fa-c2e4-481e-80-b73f27ead2.png',
-    '/src/assets/avatar/872dc38f-b629-477f-90ed-59ef5f02b.png',
-    '/src/assets/avatar/9565b9ab1d005c5f9aef0e4eb.png',
-    '/src/assets/avatar/b563bd2b-cedc7a-b343-c9854ad31a46.png',
-    '/src/assets/avatar/c1f64e87-8afb-47fa-b5c9-ce4bce69e.png',
+    '/assets/avatar/0807ac9f-7b9c-43bbe50a82e08.png',
+    '/assets/avatar/0ba46bc7-b81b-44f2cbff.png',
+    '/assets/avatar/1c87f596dbbaaebf059259272e46.png',
+    '/assets/avatar/2e7c9dc183e550431672a6911739.png',
+    '/assets/avatar/6f0439fa-c2e4-481e-80-b73f27ead2.png',
+    '/assets/avatar/872dc38f-b629-477f-90ed-59ef5f02b.png',
+    '/assets/avatar/9565b9ab1d005c5f9aef0e4eb.png',
+    '/assets/avatar/b563bd2b-cedc7a-b343-c9854ad31a46.png',
+    '/assets/avatar/c1f64e87-8afb-47fa-b5c9-ce4bce69e.png',
   ]
 
   const handleSubmit = async (e) => {
@@ -119,7 +119,7 @@ export default function LoginForm({ onLogin, onAdminLogin }) {
   return (
     <div
       style={{
-        backgroundImage: "url('/src/assets/background/login.png')",
+        backgroundImage: "url('/assets/background/login.png')",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         minHeight: '100vh',
