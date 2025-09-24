@@ -393,7 +393,9 @@ export default function LoginForm({ onLogin, onAdminLogin }) {
             </label>
           </div>
           {error && (
-            <p style={{ color: '#000000ff', fontWeight: 600, marginBottom: 15 }}>
+            <p
+              style={{ color: '#000000ff', fontWeight: 600, marginBottom: 15 }}
+            >
               {error}
             </p>
           )}

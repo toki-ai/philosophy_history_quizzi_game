@@ -156,8 +156,7 @@ export default function HomeScreen({ user, onLogout, currentLevel }) {
               <div>
                 <img
                   src={
-                    user?.avatar ||
-                    '/assets/avatar/0ba46bc7-b81b-44f2cbff.png'
+                    user?.avatar || '/assets/avatar/0ba46bc7-b81b-44f2cbff.png'
                   }
                   alt='Selected avatar'
                   style={{
