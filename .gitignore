@@ -24,6 +24,5 @@ dist-ssr
 *.sw?
 
 # Ignore Firebase config and environment files
-src/firebase/config.js
 .env
 .env.*
