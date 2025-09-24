@@ -4,10 +4,10 @@ import { db } from './firebase/config'
 import { collection, onSnapshot } from 'firebase/firestore'
 
 const LEVELS = [
-  { icon: '🏛️', title: 'Level 1: Ancient Greece' },
-  { icon: '⛪', title: 'Level 2: Medieval & Renaissance' },
-  { icon: '📚', title: 'Level 3: Modern Philosophy' },
-  { icon: '⚙️', title: 'Level 4: Pre-Marxist Materialism' },
+  { icon: '🏛️', title: 'Chương 1: Thế giới của Ý niệm' },
+  { icon: '⛪', title: 'Chương 2: Vùng đất Nghi ngờ' },
+  { icon: '📚', title: 'Chương 3: Ánh sáng Biện chứng' },
+  { icon: '⚙️', title: 'Chương 4: Mê cung Thông tin' },
 ]
 
 export default function HomeScreen({ user, onLogout, currentLevel }) {

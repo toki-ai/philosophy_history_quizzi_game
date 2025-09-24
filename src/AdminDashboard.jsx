@@ -9,7 +9,6 @@ import {
   doc,
   addDoc,
   serverTimestamp,
-  setDoc,
   getDocs,
   deleteDoc,
 } from 'firebase/firestore'
@@ -90,7 +89,7 @@ function AdminDashboard({ adminId }) {
         setCreating(false)
         return
       }
-      const docRef = await addDoc(collection(db, 'games'), {
+      await addDoc(collection(db, 'games'), {
         code: newCode,
         status: 'waiting',
         currentQ: 0,
@@ -100,11 +99,7 @@ function AdminDashboard({ adminId }) {
         adminId,
         createdAt: serverTimestamp(),
       })
-      await setDoc(doc(db, 'games', docRef.id, 'players', adminId), {
-        nickname: adminId,
-        role: 'admin',
-        score: 0,
-      })
+      // Admin không cần thêm vào players collection
       setShowDialog(false)
       setNewCode('')
     } catch (e) {

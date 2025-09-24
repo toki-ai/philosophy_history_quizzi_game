@@ -35,12 +35,19 @@ export default function LoginForm({ onLogin, onAdminLogin }) {
     e.preventDefault()
     setLoading(true)
     setError('')
+    
+    console.log('🚀 Login attempt started:', { nickname, role, gameCode, adminCode })
+    
     try {
       if (!nickname || nickname.trim() === '') {
         throw new Error('Nickname không được để trống!')
       }
+      
       if (role === 'admin') {
+        console.log('👑 Admin login flow')
         if (adminCode !== '1234') throw new Error('Admin code không đúng!')
+        
+        console.log('📝 Creating admin user in Firestore...')
         // Tạo user admin trong Firestore nếu chưa có
         const userRef = doc(db, 'users', nickname)
         await setDoc(userRef, {
@@ -49,6 +56,9 @@ export default function LoginForm({ onLogin, onAdminLogin }) {
           score: 0,
           avatar: avatars[selectedAvatarIndex],
         })
+        
+        console.log('✅ Admin user created successfully')
+        
         // Lưu vào localStorage
         const userData = {
           nickname,
@@ -57,29 +67,44 @@ export default function LoginForm({ onLogin, onAdminLogin }) {
           avatar: avatars[selectedAvatarIndex],
         }
         localStorage.setItem('user', JSON.stringify(userData))
+        console.log('💾 Admin data saved to localStorage:', userData)
+        
         if (onAdminLogin) onAdminLogin(userData)
         return
       }
       // User flow: must enter 5-digit game code
+      console.log('👤 User login flow')
+      console.log('🔍 Validating game code:', gameCode)
+      
       if (!/^[0-9]{5}$/.test(gameCode)) {
         throw new Error('Game code phải gồm 5 chữ số!')
       }
+      
+      console.log('🎮 Searching for game with code:', gameCode)
       // Check if game exists
       const gamesRef = collection(db, 'games')
       const q = query(gamesRef, where('code', '==', gameCode))
       const snap = await getDocs(q)
+      
+      console.log('📊 Query result:', { empty: snap.empty, size: snap.size })
+      
       let gameId
       if (!snap.empty) {
         // Join existing game
         const gameDoc = snap.docs[0]
         const gameData = gameDoc.data()
+        gameId = gameDoc.id
+        
+        console.log('🎯 Found game:', { gameId, status: gameData.status, data: gameData })
+        
         if (gameData.status !== 'in-progress') {
           throw new Error('Game code không hợp lệ hoặc game chưa bắt đầu!')
         }
-        gameId = gameDoc.id
       } else {
+        console.log('❌ No game found with code:', gameCode)
         throw new Error('Game code không tồn tại!')
       }
+      console.log('👥 Adding player to game...')
       // Add player to games/{gameId}/players
       const playerRef = doc(db, 'games', gameId, 'players', nickname)
       await setDoc(playerRef, {
@@ -88,7 +113,10 @@ export default function LoginForm({ onLogin, onAdminLogin }) {
         score: 0,
         avatar: avatars[selectedAvatarIndex],
       })
+      
+      console.log('✅ Player added to game successfully')
 
+      console.log('📝 Creating user document...')
       // Also create/update user document
       const userRef = doc(db, 'users', nickname)
       await setDoc(userRef, {
@@ -98,6 +126,8 @@ export default function LoginForm({ onLogin, onAdminLogin }) {
         level: 1,
         avatar: avatars[selectedAvatarIndex],
       })
+      
+      console.log('✅ User document created successfully')
 
       // Save to localStorage
       const userData = {
@@ -108,11 +138,18 @@ export default function LoginForm({ onLogin, onAdminLogin }) {
         avatar: avatars[selectedAvatarIndex],
       }
       localStorage.setItem('user', JSON.stringify(userData))
+      console.log('💾 User data saved to localStorage:', userData)
+      
+      console.log('🚀 Calling onLogin callback...')
       onLogin(userData)
+      
     } catch (err) {
+      console.error('❌ Login error:', err)
+      console.error('Error details:', { code: err.code, message: err.message })
       setError(err.message)
     } finally {
       setLoading(false)
+      console.log('🏁 Login process completed')
     }
   }
 

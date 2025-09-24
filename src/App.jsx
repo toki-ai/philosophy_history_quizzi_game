@@ -19,6 +19,7 @@ function App() {
   }, [])
 
   const handleLogin = (userData) => {
+    console.log('🏠 App.jsx: Redirecting to HomePage with user:', userData)
     setUser(userData)
   }
 
@@ -27,12 +28,14 @@ function App() {
     localStorage.removeItem('user')
   }
 
+  console.log('🎯 App.jsx render - User state:', user)
+
   return (
     <div className='App'>
       {user ? (
         <HomePage user={user} onLogout={handleLogout} />
       ) : (
-        <LoginForm onLogin={handleLogin} />
+        <LoginForm onLogin={handleLogin} onAdminLogin={handleLogin} />
       )}
     </div>
   )
